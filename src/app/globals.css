@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --color-bg: #fafafa;
+    --color-surface: #ffffff;
+    --color-surface-raised: #f4f4f5;
+    --color-border: #e4e4e7;
+    --color-border-subtle: #f4f4f5;
+    --color-text: #09090b;
+    --color-text-secondary: #71717a;
+    --color-text-tertiary: #a1a1aa;
+    --color-brand: #4f46e5;
+    --color-brand-hover: #4338ca;
+    --color-brand-subtle: #eef2ff;
+    --color-success: #059669;
+    --color-success-bg: #ecfdf5;
+    --color-danger: #dc2626;
+    --color-danger-bg: #fef2f2;
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(99, 102, 241, 0.08), transparent);
+    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.06), transparent 70%);
+  }
+
+  .dark {
+    --color-bg: #09090b;
+    --color-surface: #18181b;
+    --color-surface-raised: #27272a;
+    --color-border: #27272a;
+    --color-border-subtle: #1e1e21;
+    --color-text: #fafafa;
+    --color-text-secondary: #a1a1aa;
+    --color-text-tertiary: #71717a;
+    --color-brand: #818cf8;
+    --color-brand-hover: #6366f1;
+    --color-brand-subtle: rgba(99, 102, 241, 0.1);
+    --color-success: #34d399;
+    --color-success-bg: rgba(16, 185, 129, 0.1);
+    --color-danger: #f87171;
+    --color-danger-bg: rgba(239, 68, 68, 0.1);
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(99, 102, 241, 0.12), transparent);
+    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08), transparent 70%);
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.2);
+  }
+}
+
+@layer components {
+  /* ─── Premium Input ─────────────────────────────── */
+  .input-premium {
+    @apply w-full px-5 py-4 text-base rounded-input border transition-all duration-200 outline-none;
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .input-premium::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .input-premium:focus {
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  .input-premium:hover:not(:focus) {
+    border-color: var(--color-text-tertiary);
+  }
+
+  /* ─── Premium Button ────────────────────────────── */
+  .btn-primary {
+    @apply px-6 py-4 text-base font-medium rounded-button transition-all duration-200;
+    @apply text-white bg-brand-600 hover:bg-brand-700 active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .dark .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-400;
+    @apply focus:ring-offset-surface-950;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-3 text-sm font-medium rounded-button transition-all duration-200;
+    @apply border active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-surface-raised);
+  }
+
+  .dark .btn-secondary {
+    @apply focus:ring-offset-surface-950;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 text-sm font-medium rounded-button transition-all duration-200;
+    @apply hover:bg-surface-100 active:scale-[0.98];
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500;
+    color: var(--color-text-secondary);
+  }
+
+  .dark .btn-ghost {
+    @apply hover:bg-surface-800;
+  }
+
+  /* ─── Premium Card ──────────────────────────────── */
+  .card-premium {
+    @apply rounded-card border p-6;
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+  }
+
+  .dark .card-premium {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* ─── Dot Grid Background ───────────────────────── */
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* ─── Spinner ───────────────────────────────────── */
+  .spinner {
+    @apply inline-block w-4 h-4 border-2 rounded-full animate-spin;
+    border-color: currentColor;
+    border-right-color: transparent;
+  }
+
+  /* ─── Link Styling ──────────────────────────────── */
+  .link-brand {
+    @apply transition-colors duration-150;
+    color: var(--color-brand);
+  }
+  .link-brand:hover {
+    color: var(--color-brand-hover);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ─── Reduced Motion ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
